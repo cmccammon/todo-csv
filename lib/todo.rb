@@ -1,4 +1,4 @@
-require 'csv'
+require 'csv'  # => true
 
 class Todo
 
@@ -41,7 +41,12 @@ class Todo
   end
 
   def add_todo
-  puts  "Name of Todo > "
+    puts  "Name of Todo > "
+    response = get_input
+
+    if response != nil
+      @todos.push(response + ",no\n")
+    end
   end
 
   def mark_todo
@@ -52,6 +57,7 @@ class Todo
   end
 
   private # Don't edit the below methods, but use them to get player input and to save the csv file
+
   def get_input
     gets.chomp
   end
