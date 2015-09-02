@@ -41,6 +41,7 @@ class Todo
   end
 
   def add_todo
+  puts  "Name of Todo > "
   end
 
   def mark_todo
