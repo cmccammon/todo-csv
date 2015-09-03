@@ -35,21 +35,27 @@ class Todo
   def view_todos
     puts "Unfinished"
     @todos.each_with_index do |todo, index|
-      puts "#{index + 1}) #{todo["name"]}"
+      if todo['completed'] == "no"
+        puts "#{index + 1} #{todo["name"]}"
+      end
     end
     puts "Completed"
+    @todos.each_with_index do |todo, index|
+      if todo['completed'] == "yes"
+        puts "#{index + 1} #{todo["name"]}"
+      end
+    end
   end
 
   def add_todo
     puts  "Name of Todo > "
-    response = get_input
-      @todos.push("#{get_input},no\n")
+    @todos << [get_input, "no"]
   end
 
   def mark_todo
     puts "Which todo have you finished?"
-    rum = get_input.to_i
-    @todos[rum - 1]["completed"] = "yes"
+    ans = get_input.to_i
+    @todos[ans - 1]["completed"] = "yes"
   end
 
   def todos
